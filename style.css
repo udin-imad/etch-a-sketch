@@ -1,0 +1,21 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+h1 {
+  font-family: Roboto;
+  font-style: italic;
+}
+
+#container {
+  display: grid;
+  width: 500px;
+  height: 500px;
+  border: 1px solid rgb(0, 0, 0);
+}
+
+#grid {
+  border: 1px solid #919191;
+  background-color: #9de6ff;
+}
