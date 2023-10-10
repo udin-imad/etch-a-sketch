@@ -1,25 +1,18 @@
-let gridSize = 16;
 const container = document.querySelector('#container');
-const buttons = document.querySelectorAll('button');
+const sizeButtons = document.querySelectorAll('.grid-size');
+const colorsButton = document.querySelectorAll('.color');
+const slider = document.querySelector('#my-range');
 
-const getRandomColorR = () => {
-  return Math.floor(Math.random() * 255);
-};
-
-const getRandomColorG = () => {
-  return Math.floor(Math.random() * 255);
-}
-
-const getRandomColorB = () => {
-  return ;
-}
+let gridSize = 16;
+let colorChoice = 'black';
+let darknessLevel = slider.value;
 
 function createGrid(size) {
   container.setAttribute('style', 
-    `grid-template-columns:repeat(${size}, 1fr); 
-     grid-template-rows:repeat(${size}, 1fr)`
+  `grid-template-columns:repeat(${size}, 1fr); 
+  grid-template-rows:repeat(${size}, 1fr)`
   );
-
+  
   for (let i = 0; i < size*size; i++ ) {
     const grid = document.createElement('div');
     grid.setAttribute('id', 'grid');
@@ -29,11 +22,15 @@ function createGrid(size) {
   const grids = document.querySelectorAll('#grid');
   grids.forEach((grid) => {
     grid.addEventListener('mouseover', () => {
-      grid.style.backgroundColor = `rgb(
-        ${Math.floor(Math.random() * 255)},
-        ${Math.floor(Math.random() * 255)},
-        ${Math.floor(Math.random() * 255)}
-      )`;
+      if (colorChoice === 'black') {
+        grid.style.backgroundColor = `rgb(${darknessLevel}, ${darknessLevel}, ${darknessLevel})`
+      } else {
+        grid.style.backgroundColor = `rgb(
+          ${Math.floor(Math.random() * 255)},
+          ${Math.floor(Math.random() * 255)},
+          ${Math.floor(Math.random() * 255)}
+        )`;
+      }
     });
   });
 };
@@ -44,12 +41,22 @@ function removeGrid(parent) {
   };
 };
 
-buttons.forEach((btn) => {
+sizeButtons.forEach((btn) => {
   btn.addEventListener('click', () => {
     removeGrid(container);
     gridSize = parseInt(btn.id);
     createGrid(gridSize);
-  })
-})
+  });
+});
 
-createGrid(gridSize)
+colorsButton.forEach((color) => {
+  color.addEventListener('click', () => {
+    colorChoice = color.id;
+  });
+});
+
+slider.oninput = function() {
+  darknessLevel = parseInt(this.value);
+};
+
+createGrid(gridSize);

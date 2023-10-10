@@ -9,9 +9,12 @@
 </head>
 <body>
   <h1>Etch a Sketch</h1>
-  <button id="16">16 x 16</button>
-  <button id="32">32 x 32</button>
-  <button id="64">64 x 64</button>
+  <button class="grid-size" id="16">16 x 16</button>
+  <button class="grid-size" id="32">32 x 32</button>
+  <button class="grid-size" id="64">64 x 64</button>
+  <button class="color" id="black">Black</button>
+  <input type="range" min="0" max="255" value="0" id="my-range">
+  <button class="color" id="random">Random</button>
   <div id="container"></div>
 
   <script src="script.js"></script>

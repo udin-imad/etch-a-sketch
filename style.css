@@ -12,10 +12,10 @@ h1 {
   display: grid;
   width: 500px;
   height: 500px;
-  border: 1px solid rgb(0, 0, 0);
+  border: 1px solid #000000;
 }
 
 #grid {
-  border: 1px solid #919191;
-  background-color: #9de6ff;
+  background-color: #ffffff;
+  border: 1px solid #dbdbdb;
 }
